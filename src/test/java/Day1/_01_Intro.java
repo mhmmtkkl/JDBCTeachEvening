@@ -2,11 +2,9 @@ package Day1;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 
 public class _01_Intro {
@@ -24,6 +22,14 @@ public class _01_Intro {
 
     /*
         Usually in the interview they can ask about connection statement and result set
+
+        Interview
+
+        Step by step JDBC connection?
+            First I need my connection to my database I am providing the URL , Username , password
+            Then I am creating statement to execute the queries.
+            After I execute them I am storing my data in the resultSet
+            I am using result set for testing.
 
 
 
@@ -47,6 +53,34 @@ public class _01_Intro {
         connection.close();
     }
 
-    
+    @Test
+    public void test1() throws SQLException {
+        // ResultSet -->  After send the query we need to store it in ResultSet so we can use it in the testing.
+        ResultSet rs = statement.executeQuery("select * from actor;");
+
+        /*
+            After I get the data
+
+            Result set locations is location 0 but my data base is starting from 1
+            To make the result set location from 0 to 1 I need to use .next()
+         */
+        rs.next();
+
+        //How to get the data from ResultSet
+        String firstName = rs.getString("first_name");
+
+        System.out.println(firstName);
+
+
+    }
 
 }
+
+
+
+
+
+
+
+
+
