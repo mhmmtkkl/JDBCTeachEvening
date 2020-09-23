@@ -44,5 +44,17 @@ public class _03_GetAllColumn {
     }
 
     // Get only name column in the category table and print all the data in that column
+    @Test
+    public void Task1() throws SQLException {
+        ResultSet rs = statement.executeQuery("SELECT name FROM category;");
+
+        while(rs.next()){
+            String name = rs.getString(1);
+            System.out.println(name);
+        }
+    }
+
+
+// get all the countryID and country column from the country table
 
 }
