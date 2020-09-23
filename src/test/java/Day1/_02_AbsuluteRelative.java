@@ -8,6 +8,12 @@ import java.sql.*;
 
 public class _02_AbsuluteRelative {
 
+    /*
+    Absolute and relative
+
+    Absolute is jumps to exact location
+    relative is taking the current row + number in the parenthesis
+     */
 
     private Connection connection; // With a connection I am able to connect to my Database need to provide URL , username , password
     private Statement statement;  //  Once you have a Java Statement instance you can execute either a database
@@ -58,7 +64,57 @@ public class _02_AbsuluteRelative {
      //   System.out.println(title5);
 
 
+        /*
+            If you use multiuple absolute
+            rs.absolute(5);  --> navigate to 5th location in the table
+            rs.absolute(8);  --> navigate to 8th location in the table
+
+         */
+        rs.absolute(8);
+        String filmID4 = rs.getString("title");
+        System.out.println("film ID 4 -->  "+filmID4);
     }
 
+    @Test
+    public void relativeExample() throws SQLException {
+        ResultSet rs = statement.executeQuery("SELECT * FROM city;");
+
+        rs.relative(5);
+        String cityName = rs.getString(2);
+        System.out.println(cityName);
+
+        // in the absolute if I need to jump to 11 th location then I need to use rs.absolute(11)
+        // in the relative if I need to jump to 11 th location then I need to use rs.relative(6);
+        // relative works as 5(current Row)+6(row in the parenthesis)
+
+        rs.relative(6);
+        String cityName2 = rs.getString(2);
+        System.out.println(cityName2);
+    }
+
+    @Test
+    public void lastFirstKeyword() throws SQLException {
+
+        ResultSet rs = statement.executeQuery("SELECT * FROM city;");
+
+        rs.last();//this will navigate to last row in the table
+
+        String cityName = rs.getString("city");
+        String countryID = rs.getString("country_id");
+
+        System.out.println(cityName + " -- " + countryID);
+
+        rs.first(); // this will navigate to first row in the table
+        String firstCityName = rs.getString("city");
+        System.out.println(firstCityName);
+
+    }
+
+
+    /*
+        Get the address , district in the 10th row , 22th and last row in the address table
+
+     */
+        
 
 }
