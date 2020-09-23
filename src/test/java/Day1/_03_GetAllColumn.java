@@ -31,14 +31,18 @@ public class _03_GetAllColumn {
 
         ResultSet rs = statement.executeQuery("SELECT * FROM customer;");
 
-        rs.next();
+//        if there is a next row then navigate to there.
+        while(rs.next()){
 
+            String firstName = rs.getString("first_name");
+            String email = rs.getString(5);
 
+            System.out.println("firstName --> " + firstName + " ---" + " email -->  "+ email);
 
-
-
-
+        }
 
     }
+
+    // Get only name column in the category table and print all the data in that column
 
 }
