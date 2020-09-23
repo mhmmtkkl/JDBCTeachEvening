@@ -57,4 +57,26 @@ public class _03_GetAllColumn {
 
 // get all the countryID and country column from the country table
 
+    @Test
+    public void Task2() throws SQLException {
+        ResultSet rs = statement.executeQuery("select * from country;");
+
+        while(rs.next()){
+
+            String CountryID = rs.getString(1);
+            String countryName = rs.getString(2);
+
+            System.out.println(CountryID + " CountryName --> " + countryName);
+
+        }
+
+    }
+
 }
+
+    /*
+        Connection statement and result set.
+
+
+
+     */
