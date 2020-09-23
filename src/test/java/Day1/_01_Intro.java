@@ -67,12 +67,82 @@ public class _01_Intro {
         rs.next();
 
         //How to get the data from ResultSet
+
+        // rs.getString("first_name");  --> it is taking the data from the first_name column
         String firstName = rs.getString("first_name");
 
         System.out.println(firstName);
 
+        rs.next();
+
+        firstName = rs.getString("first_name");
+
+        System.out.println(firstName);
 
     }
+
+    /*
+        Get all the data from the language table
+
+        print 1.
+              2.
+              3.
+              name from the table
+
+     */
+
+    @Test
+    public void Task1() throws SQLException {
+        ResultSet rs = statement.executeQuery("SELECT * FROM language;");
+
+        rs.next();
+        String name1 = rs.getString("name");
+        System.out.println(name1);
+
+        rs.next();
+        String name2 = rs.getString("name");
+        System.out.println(name2);
+
+        rs.next();
+        String name3 = rs.getString("name");
+        System.out.println(name3);
+
+    }
+
+    @Test
+    public void AlternativeTask1() throws SQLException {
+        ResultSet rs = statement.executeQuery("SELECT * FROM language;");
+
+         rs.next();
+        // rs.getString(2);  in the pharanthesis we can mention the column name and also we can mention the
+        // location of the column.
+        String name1 = rs.getString(2);
+        System.out.println(name1);
+
+        rs.next();
+        // rs.getString(2);  in the pharanthesis we can mention the column name and also we can mention the
+        // location of the column.
+        String name2 = rs.getString(2);
+        System.out.println(name2);
+
+        rs.next();
+        // rs.getString(2);  in the pharanthesis we can mention the column name and also we can mention the
+        // location of the column.
+        String name3 = rs.getString(2);
+        System.out.println(name3);
+
+
+        /*
+            With a .next() we can navigate forward in the table
+            With a .previous() we can navigate to backward.
+         */
+
+        rs.previous();
+        String name4 = rs.getString(2);
+        System.out.println(name4);
+
+    }
+
 
 }
 
