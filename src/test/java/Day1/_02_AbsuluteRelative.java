@@ -113,8 +113,31 @@ public class _02_AbsuluteRelative {
 
     /*
         Get the address , district in the 10th row , 22th and last row in the address table
-
      */
-        
+
+    @Test
+    public void Task1() throws SQLException {
+        ResultSet rs = statement.executeQuery("SELECT address, district FROM address;");
+
+        rs.relative(10);
+        String address = rs.getString("address");
+        String district = rs.getString("district");
+
+        System.out.println("address 10th --> " + address + "  ---  " +"district  --> " + district);
+
+        rs.relative(12);
+        String address2 = rs.getString("address");
+        String district2 = rs.getString("district");
+
+        System.out.println("address 22th --> " + address2 + "  ---  " +"district  --> " + district2);
+
+        rs.last();
+        String address3 = rs.getString("address");
+        String district3 = rs.getString("district");
+
+        System.out.println("address last --> " + address3 + "  ---  " +"district  --> " + district3);
+
+    }
+
 
 }
