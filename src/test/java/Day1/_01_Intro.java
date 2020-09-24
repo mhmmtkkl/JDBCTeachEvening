@@ -41,7 +41,7 @@ public class _01_Intro {
 
     @BeforeClass
     public void beforeClass() throws SQLException {
-        String URL ="jdbc:mysql://test.medis.mersys.io:3306/sakila";
+        String URL ="jdbc:mysql://test.medis.mersys.io:33306/sakila";
         String username = "technostudy";
         String password = "zhTPis0l9#$&";
         connection = DriverManager.getConnection(URL,username,password);
