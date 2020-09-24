@@ -50,12 +50,27 @@ public class AllColmnAndRow {
 
         ResultSet rs = statement.executeQuery("select language_id , name from language;");
 
+        ResultSetMetaData rsmd = rs.getMetaData(); // ResultSetMetaData count of column , column name , dataType
 
+        int columnCount = rsmd.getColumnCount(); // this will have how many columns I have in my table
 
+        System.out.println("column Count -->   "+columnCount);
 
+        while(rs.next()){
 
+            for(int i = 1 ; i <= columnCount ; i++){
 
+                String data = rs.getString(i);
+                System.out.print(data + " -- ");
+
+            }
+            System.out.println();
+        }
 
     }
+
+
+    // Get the title , rental_rate , special_features in the film table
+
 
 }
