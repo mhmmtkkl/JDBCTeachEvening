@@ -72,5 +72,28 @@ public class AllColmnAndRow {
 
     // Get the title , rental_rate , special_features in the film table
 
+    @Test
+    public void test3() throws SQLException {
+        ResultSet rs = statement.executeQuery("select title , rental_rate , special_features from film;");
+
+        ResultSetMetaData rsmd = rs.getMetaData();
+
+        int columnCount = rsmd.getColumnCount();
+
+        while(rs.next()){
+
+           for(int i = 1 ; i <= columnCount ; i++){
+
+               String data = rs.getString(i);
+
+               System.out.print(data + " -- ");
+
+           }
+            System.out.println();
+        }
+
+
+    }
+
 
 }
